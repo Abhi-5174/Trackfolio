@@ -1,0 +1,13 @@
+name: Restrict PR Merging  
+on: pull_request  
+jobs:  
+  prevent-unauthorized-merge:  
+    runs-on: ubuntu-latest  
+    steps:  
+      - name: Check If User Is Admin  
+        run: |  
+          ADMIN_USERS="Abhi-5174"  
+          if [[ ! " $ADMIN_USERS " =~ " ${{ github.actor }} " ]]; then  
+            echo "Only admins can merge pull requests!"  
+            exit 1  
+          fi  
