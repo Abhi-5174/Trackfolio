@@ -1,0 +1,116 @@
+.footer {
+  width: 100%;
+  background-color: #e5e6e9; /* Softer blue, complementing navbar */
+  padding: 50px 0;
+  color: black; /* White text for contrast */
+  font-family: "Arial", sans-serif;
+}
+
+/* Main Content Layout */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-sections {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Columns */
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-column h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #000; /* Soft white */
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: #000; /* Light pastel blue */
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #a5b4fc; /* Soft hover effect */
+}
+
+/* App Store Buttons */
+.app-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.app-buttons img {
+  width: 130px;
+  height: auto;
+}
+
+/* Bottom Section */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #94a3b8; /* Light grayish-blue border */
+  padding-top: 20px;
+  margin-top: 30px;
+  text-align: center;
+  margin-left: 50px;
+}
+
+.footer-bottom p {
+  color: #000; /* Softer light gray */
+  font-size: 14px;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-right: 50px;
+}
+
+.social-icons a {
+  font-size: 18px;
+  color: #000; /* Light blue */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #dbeafe; /* Even lighter blue on hover */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-sections {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+  }
+
+  .social-icons {
+    margin-top: 10px;
+  }
+}

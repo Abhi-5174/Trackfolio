@@ -1,0 +1,154 @@
+body {
+  margin: 0;
+  padding-top: 70px; /* Adjust based on navbar height */
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e3a8a;
+  /* background-color: rgb(26, 25, 57); */
+
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  padding-right: 20px;
+  padding-left: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Brand (Investment Tracker) */
+.brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  padding-left: 30px;
+}
+
+/* Keep original styles */
+
+/* Logo and Brand Name Container */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* Logo Styling */
+.nav-logo {
+  width: 40px; /* Adjust for better fit */
+  height: 40px;
+  object-fit: contain; /* Ensures the image scales properly */
+}
+
+/* Brand Name */
+.brand-name {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .brand-logo {
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .nav-logo {
+    width: 35px;
+    height: 35px;
+  }
+
+  .brand-name {
+    font-size: 1.4rem;
+  }
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Reduce gap for better fit */
+  padding-right: 50px;
+}
+
+/* Links styling */
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 10px 14px; /* Adjust padding to fit navbar */
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Active Link Styling */
+.nav-links .active-link {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Dashboard button styling */
+.dashboard-btn {
+  background-color: #facc15;
+  color: #1e3a8a !important;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  border-radius: 5px;
+  text-align: center;
+}
+
+.dashboard-btn:hover {
+  background-color: #eab308;
+}
+
+/* Hover effect */
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .nav-links {
+    gap: 10px;
+  }
+  .nav-links a {
+    padding: 8px 12px;
+    font-size: 1rem;
+  }
+  .dashboard-btn {
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 8px;
+  }
+
+  .nav-links a {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .dashboard-btn {
+    padding: 8px 10px;
+  }
+}

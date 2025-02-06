@@ -1,0 +1,107 @@
+/* Container to center the login form */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f6f9;
+  background-image: url("https://media.istockphoto.com/id/1584774403/photo/uptrend-line-candlestick-graph-financial-diagrams.jpg?s=612x612&w=0&k=20&c=gLckUiRgsYy551JbGcdnloKYCDMrh6pgLrK1-xk-qTs=");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 20px;
+}
+
+/* Form container styling */
+.login-form {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+/* Form heading */
+.login-form h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Input fields styles */
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  display: block;
+  box-sizing: border-box;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  border: 1px solid #ddd;
+  transition: border-color 0.3s ease;
+}
+
+.login-form input[type="email"]:focus,
+.login-form input[type="password"]:focus {
+  border-color: #4f83cc;
+  outline: none;
+}
+
+/* Forgot Password Container */
+.forgot-password-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px; /* Add spacing above */
+}
+
+/* Forgot Password Link Styling */
+.forgot-password {
+  color: #1e3a8a; /* Dark blue */
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.forgot-password:hover {
+  color: #0f172a; /* Slightly darker blue on hover */
+  text-decoration: underline;
+}
+
+/* Button styling */
+.login-form button {
+  background-color: #4f83cc;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Adds spacing after the forgot password link */
+}
+
+.login-form button:hover {
+  background-color: #3c6f9b;
+}
+
+/* Error message style (if needed) */
+.error-message {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-form {
+    padding: 1.5rem;
+  }
+}
