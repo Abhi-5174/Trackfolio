@@ -1,0 +1,149 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Home Page Styles */
+.hero-section {
+  background: linear-gradient(135deg, #3498db, #8e44ad);
+  color: white;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+.hero-section .cta-buttons a {
+  margin: 10px;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  transition: 0.3s ease;
+}
+
+.hero-section .cta-buttons a:hover {
+  background-color: #fff;
+  color: #3498db;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Dashboard Styles */
+.dashboard {
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.dashboard h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.dashboard .pie-chart {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.dashboard .chart-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.dashboard .chart-container .chart {
+  flex: 1;
+  background-color: #f1f1f1;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.dashboard .chart-container .chart:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.chart-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.chart-value {
+  font-size: 2rem;
+  color: #2ecc71;
+}
+
+/* Login & Signup Page Styles */
+.form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-container input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+  background-color: #2980b9;
+}
+
+.form-container .form-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}

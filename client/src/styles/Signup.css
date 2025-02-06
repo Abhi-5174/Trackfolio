@@ -1,0 +1,91 @@
+/* src/styles/Signup.css */
+
+/* Container to center the signup form */
+.signup-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f6f9;
+  background-image: url("https://media.istockphoto.com/id/1584774403/photo/uptrend-line-candlestick-graph-financial-diagrams.jpg?s=612x612&w=0&k=20&c=gLckUiRgsYy551JbGcdnloKYCDMrh6pgLrK1-xk-qTs=");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 20px;
+}
+
+/* Form container styling */
+.signup-form {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+/* Form heading */
+.signup-form h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Input fields styles */
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"],
+.signup-form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  display: block;
+  box-sizing: border-box;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"] {
+  border: 1px solid #ddd;
+  transition: border-color 0.3s ease;
+}
+
+.signup-form input[type="text"]:focus,
+.signup-form input[type="email"]:focus,
+.signup-form input[type="password"]:focus {
+  border-color: #4f83cc;
+  outline: none;
+}
+
+/* Button styling */
+.signup-form button {
+  background-color: #4f83cc;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-form button:hover {
+  background-color: #3c6f9b;
+}
+
+/* Error message style (if needed) */
+.error-message {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Add some spacing for better presentation on mobile */
+@media (max-width: 768px) {
+  .signup-form {
+    padding: 1.5rem;
+  }
+}
