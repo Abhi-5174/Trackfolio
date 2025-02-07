@@ -3,25 +3,18 @@ import "../styles/navbar.css"; // Import the updated CSS file
 import Logo from "../../src/assets/png/Logo.png"; // Import your logo
 import { useAuth } from "../context/AuthProvider";
 import { useState } from "react";
-import "../styles/Navbar.css"; 
-import Logo from "../../src/assets/png/Logo.png"; 
-import { FaBars, FaTimes } from "react-icons/fa"; 
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
   const location = useLocation(); // Get the current route
   const navigate = useNavigate(); // Hook for programmatic navigation
 
   const { isAuthenticated, setIsAuthenticated } = useAuth();
-  // Function to navigate to home when clicking the logo or name
-  const location = useLocation(); 
-  const navigate = useNavigate(); 
   const [menuOpen, setMenuOpen] = useState(false);
-
 
   const handleLogoClick = () => {
     navigate("/");
   };
-
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -35,15 +28,14 @@ const Navbar = () => {
       </div>
 
       <div className="nav-links">
-        {/* <Link to="/" className={location.pathname === "/" ? "active-link" : ""}>
-          Home
-        </Link> */}
         {isAuthenticated ? (
           <>
             <button
               className="sign-out-btn"
               onClick={() => {
+                localStorage.removeItem("accessToken");
                 setIsAuthenticated(false);
+                navigate("/");
               }}
             >
               Sign Out
@@ -65,12 +57,12 @@ const Navbar = () => {
             </Link>
           </>
         )}
-      <button className="menu-toggle" onClick={toggleMenu}>
-        {menuOpen ? <FaTimes /> : <FaBars />}
-      </button>
+        <button className="menu-toggle" onClick={toggleMenu}>
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
 
- 
-      <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+      {/* <div className={`nav-links ${menuOpen ? "open" : ""}`}>
         <Link
           to="/login"
           className={location.pathname === "/login" ? "active-link" : ""}
@@ -85,14 +77,7 @@ const Navbar = () => {
         >
           Sign Up
         </Link>
-        {/* <Link
-          to="/dashboard"
-          className={`dashboard-btn ${location.pathname === "/dashboard" ? "active-link" : ""}`}
-          onClick={() => setMenuOpen(false)}
-        >
-          Dashboard
-        </Link> */}
-      </div>
+      </div> */}
     </nav>
   );
 };

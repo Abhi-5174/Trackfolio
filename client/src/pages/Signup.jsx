@@ -12,7 +12,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { isAuthenticated } = useAuth();
-  console.log({ API_BASE_URL });
+  // console.log({ API_BASE_URL });
   const navigate = useNavigate();
   if (isAuthenticated) {
     navigate("/dashboard");

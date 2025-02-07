@@ -4,8 +4,8 @@ import { useAuth } from "./context/AuthProvider";
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
 
-  console.log({ isAuthenticated });
-  return isAuthenticated ? children : <Navigate to="/login" />;
+  // console.log({ isAuthenticated });
+  return isAuthenticated ? children : <Navigate to="/" />;
 };
 
 export default PrivateRoute;

@@ -9,15 +9,24 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const verifyToken = async (token) => {
+    if (!token) {
+      // console.log("No token found, redirecting to login");
+      setIsAuthenticated(false);
+      navigate("/");
+      return;
+    }
+
     try {
       await axios.post(`http://localhost:5000/auth-verify`, {
         token,
       });
+      // console.log("Token verified, redirecting to dashboard");
       setIsAuthenticated(true);
       navigate("/dashboard");
     } catch (error) {
+      // console.log("Token verification failed, redirecting to login", error);
       setIsAuthenticated(false);
-      navigate("/login");
+      navigate("/");
     }
   };
 
