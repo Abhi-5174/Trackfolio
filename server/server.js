@@ -5,7 +5,7 @@ const connectDB = require("./config/db");
 const errorHandler = require("./middleware/errorHandler");
 const router = require("./routes/mainRoutes");
 
-const URL1 = process.env.FRONTEND_URL || "http://localhost:5173";
+const URL1 = process.env.FRONTEND_URL || "http://localhost:5182";
 const URL2 = process.env.FRONTEND_URL || "http://localhost:5000";
 
 const app = express();

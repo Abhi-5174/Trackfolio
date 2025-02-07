@@ -6,7 +6,7 @@ const crypto = require("crypto");
 require("dotenv/config");
 
 const JWT_SECRET = process.env.JWT_SECRET;
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5182";
 
 // Signup
 exports.signup = async (req, res, next) => {
@@ -56,7 +56,9 @@ exports.forgotPassword = async (req, res, next) => {
     user.resetTokenExpiry = Date.now() + 3600000; // 1 hour
     await user.save();
 
-    const resetLink = `${FRONTEND_URL}/reset-password/${token}`;
+    //const resetLink = `${FRONTEND_URL}/reset-password/${token}`;
+    const resetLink = `http://localhost:5182/reset-password/${token}`;
+
     const contactUsLink = `${FRONTEND_URL}/contact-us`;
 
     const emailContent = `
@@ -70,11 +72,7 @@ exports.forgotPassword = async (req, res, next) => {
     </div>
   `;
 
-    await sendEmail(
-      email,
-      "Password Reset",
-      emailContent
-    );
+    await sendEmail(email, "Password Reset", emailContent);
 
     res.json({ message: "Password reset email sent!" });
   } catch (error) {
@@ -95,7 +93,7 @@ exports.resetPassword = async (req, res, next) => {
     if (!user)
       return res.status(400).json({ message: "Invalid or expired token" });
 
-    user.password = await bcrypt.hash(newPassword, 10);
+    user.password = newPassword;
     user.resetToken = undefined;
     user.resetTokenExpiry = undefined;
     await user.save();

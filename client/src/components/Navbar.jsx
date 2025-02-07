@@ -3,7 +3,7 @@ import "../styles/navbar.css"; // Import the updated CSS file
 import Logo from "../../src/assets/png/Logo.png"; // Import your logo
 import { useAuth } from "../context/AuthProvider";
 import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaTachometerAlt } from "react-icons/fa";
 
 const Navbar = () => {
   const location = useLocation(); // Get the current route
@@ -30,6 +30,15 @@ const Navbar = () => {
       <div className="nav-links">
         {isAuthenticated ? (
           <>
+            <Link
+              to="/dashboard"
+              className={
+                location.pathname === "/dashboard" ? "active-link" : ""
+              }
+            >
+              <FaTachometerAlt size={20} style={{ marginRight: "8px" }} />{" "}
+              {/* Dashboard Icon */}
+            </Link>
             <button
               className="sign-out-btn"
               onClick={() => {
@@ -61,23 +70,6 @@ const Navbar = () => {
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
-
-      {/* <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-        <Link
-          to="/login"
-          className={location.pathname === "/login" ? "active-link" : ""}
-          onClick={() => setMenuOpen(false)}
-        >
-          Login
-        </Link>
-        <Link
-          to="/signup"
-          className={location.pathname === "/signup" ? "active-link" : ""}
-          onClick={() => setMenuOpen(false)}
-        >
-          Sign Up
-        </Link>
-      </div> */}
     </nav>
   );
 };
