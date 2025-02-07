@@ -1,30 +1,27 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import "../styles/navbar.css"; // Import the updated CSS file
-import Logo from "../../src/assets/png/Logo.png"; // Import your logo
-import { useAuth } from "../context/AuthProvider";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import "../styles/Navbar.css"; 
-import Logo from "../../src/assets/png/Logo.png"; 
-import { FaBars, FaTimes } from "react-icons/fa"; 
+import { useAuth } from "./auth"; // Adjust the import path as necessary
+import Logo from "../../src/assets/png/Logo.png"; // Adjust the import path as necessary
+import { FaBars, FaTimes } from "react-icons/fa"; // Adjust the import path as necessary
 
 const Navbar = () => {
-  const location = useLocation(); // Get the current route
-  const navigate = useNavigate(); // Hook for programmatic navigation
-
+  const navigate = useNavigate();
+  const location = useLocation();
   const { isAuthenticated, setIsAuthenticated } = useAuth();
-  // Function to navigate to home when clicking the logo or name
-  const location = useLocation(); 
-  const navigate = useNavigate(); 
   const [menuOpen, setMenuOpen] = useState(false);
-
 
   const handleLogoClick = () => {
     navigate("/");
   };
 
-
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem("accessToken"); // Clear token from storage
+    setIsAuthenticated(false);
+    navigate("/login"); // Redirect to login page after sign out
   };
 
   return (
@@ -34,65 +31,34 @@ const Navbar = () => {
         <img src={Logo} alt="Trackfolio Logo" className="nav-logo" />
       </div>
 
-      <div className="nav-links">
-        {/* <Link to="/" className={location.pathname === "/" ? "active-link" : ""}>
-          Home
-        </Link> */}
+      <div className={`nav-links ${menuOpen ? "open" : ""}`}>
         {isAuthenticated ? (
-          <>
-            <button
-              className="sign-out-btn"
-              onClick={() => {
-                setIsAuthenticated(false);
-              }}
-            >
-              Sign Out
-            </button>
-          </>
+          <button className="sign-out-btn" onClick={handleSignOut}>
+            Sign Out
+          </button>
         ) : (
           <>
             <Link
               to="/login"
               className={location.pathname === "/login" ? "active-link" : ""}
+              onClick={() => setMenuOpen(false)}
             >
               Login
             </Link>
             <Link
               to="/signup"
               className={location.pathname === "/signup" ? "active-link" : ""}
+              onClick={() => setMenuOpen(false)}
             >
               Sign Up
             </Link>
           </>
         )}
+      </div>
+
       <button className="menu-toggle" onClick={toggleMenu}>
         {menuOpen ? <FaTimes /> : <FaBars />}
       </button>
-
- 
-      <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-        <Link
-          to="/login"
-          className={location.pathname === "/login" ? "active-link" : ""}
-          onClick={() => setMenuOpen(false)}
-        >
-          Login
-        </Link>
-        <Link
-          to="/signup"
-          className={location.pathname === "/signup" ? "active-link" : ""}
-          onClick={() => setMenuOpen(false)}
-        >
-          Sign Up
-        </Link>
-        {/* <Link
-          to="/dashboard"
-          className={`dashboard-btn ${location.pathname === "/dashboard" ? "active-link" : ""}`}
-          onClick={() => setMenuOpen(false)}
-        >
-          Dashboard
-        </Link> */}
-      </div>
     </nav>
   );
 };
