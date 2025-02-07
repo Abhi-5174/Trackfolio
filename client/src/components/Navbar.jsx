@@ -1,45 +1,54 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import "../styles/navbar.css"; // Import the updated CSS file
-import Logo from "../../src/assets/png/Logo.png"; // Import your logo
+import { useState } from "react";
+import "../styles/Navbar.css"; 
+import Logo from "../../src/assets/png/Logo.png"; 
+import { FaBars, FaTimes } from "react-icons/fa"; 
 
 const Navbar = () => {
-  const location = useLocation(); // Get the current route
-  const navigate = useNavigate(); // Hook for programmatic navigation
+  const location = useLocation(); 
+  const navigate = useNavigate(); 
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // Function to navigate to home when clicking the logo or name
+
   const handleLogoClick = () => {
     navigate("/");
   };
 
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <nav className="navbar">
-      {/* Logo and App Name (Clickable) */}
       <div className="brand-logo" onClick={handleLogoClick}>
         <h1 className="brand-name">Trackfolio</h1>
         <img src={Logo} alt="Trackfolio Logo" className="nav-logo" />
       </div>
+      <button className="menu-toggle" onClick={toggleMenu}>
+        {menuOpen ? <FaTimes /> : <FaBars />}
+      </button>
 
-      <div className="nav-links">
-        {/* <Link to="/" className={location.pathname === "/" ? "active-link" : ""}>
-          Home
-        </Link> */}
+ 
+      <div className={`nav-links ${menuOpen ? "open" : ""}`}>
         <Link
           to="/login"
           className={location.pathname === "/login" ? "active-link" : ""}
+          onClick={() => setMenuOpen(false)}
         >
           Login
         </Link>
         <Link
           to="/signup"
           className={location.pathname === "/signup" ? "active-link" : ""}
+          onClick={() => setMenuOpen(false)}
         >
           Sign Up
         </Link>
         {/* <Link
           to="/dashboard"
-          className={`dashboard-btn ${
-            location.pathname === "/dashboard" ? "active-link" : ""
-          }`}
+          className={`dashboard-btn ${location.pathname === "/dashboard" ? "active-link" : ""}`}
+          onClick={() => setMenuOpen(false)}
         >
           Dashboard
         </Link> */}

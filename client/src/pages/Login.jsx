@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../src/styles/Login.css"; // Import the CSS file
+import "../../src/styles/Login.css"; 
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +16,9 @@ const Login = () => {
   return (
     <div className="login-page">
       <form onSubmit={handleLogin} className="login-form">
-        <h2>Login</h2>
+        <h1>Welcome</h1>
+        <h2>Login to your Trackfolio account</h2>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           className="border p-2 mb-2 w-full"
@@ -24,6 +26,7 @@ const Login = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           className="border p-2 mb-2 w-full"

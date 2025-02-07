@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  padding-top: 70px; /* Adjust based on navbar height */
+  padding-top: 60px; /* Adjust for fixed navbar */
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Navbar Styling */
@@ -8,29 +9,16 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1e3a8a;
-  /* background-color: rgb(26, 25, 57); */
-
+  background-color: #080e15;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding: 10px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Brand (Investment Tracker) */
-.brand {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: white;
-  padding-left: 30px;
-}
-
-/* Keep original styles */
-
-/* Logo and Brand Name Container */
+/* Brand Logo */
 .brand-logo {
   display: flex;
   align-items: center;
@@ -38,70 +26,45 @@ body {
   cursor: pointer;
 }
 
-/* Logo Styling */
 .nav-logo {
-  width: 40px; /* Adjust for better fit */
+  width: 40px;
   height: 40px;
-  object-fit: contain; /* Ensures the image scales properly */
+  object-fit: contain;
 }
 
-/* Brand Name */
 .brand-name {
   font-size: 1.6rem;
   font-weight: bold;
   color: white;
 }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-  .brand-logo {
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .nav-logo {
-    width: 35px;
-    height: 35px;
-  }
-
-  .brand-name {
-    font-size: 1.4rem;
-  }
-}
-
-/* Navigation links */
+/* Navigation Links */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 10px; /* Reduce gap for better fit */
-  padding-right: 50px;
+  gap: 15px;
 }
 
-/* Links styling */
 .nav-links a {
   text-decoration: none;
   color: white;
   font-size: 1.1rem;
   font-weight: 500;
-  padding: 10px 14px; /* Adjust padding to fit navbar */
+  padding: 10px 14px;
   border-radius: 5px;
   transition: background 0.3s ease-in-out;
 }
 
-/* Active Link Styling */
 .nav-links .active-link {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Dashboard button styling */
+/* Dashboard Button */
 .dashboard-btn {
   background-color: #facc15;
   color: #1e3a8a !important;
   font-weight: bold;
-  padding-left: 10px;
-  padding-right: 10px;
-
+  padding: 10px;
   border-radius: 5px;
   text-align: center;
 }
@@ -110,45 +73,52 @@ body {
   background-color: #eab308;
 }
 
-/* Hover effect */
-.nav-links a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+/* Hamburger Menu */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .nav-links {
-    gap: 10px;
-  }
-  .nav-links a {
-    padding: 8px 12px;
-    font-size: 1rem;
-  }
-  .dashboard-btn {
-    padding: 8px 12px;
-  }
-}
-
+/* Responsive Styles */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
     padding: 15px;
   }
 
+  /* Hide nav-links initially */
   .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 10px;
-    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #080e15;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    gap: 10px;
+    transform: translateY(-200%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Show menu when active */
+  .nav-links.open {
+    transform: translateY(0);
   }
 
   .nav-links a {
-    padding: 8px 10px;
-    font-size: 0.9rem;
+    padding: 12px;
+    font-size: 1rem;
   }
 
-  .dashboard-btn {
-    padding: 8px 10px;
+  /* Show hamburger menu */
+  .menu-toggle {
+    display: block;
   }
 }
