@@ -4,13 +4,37 @@ import "../../src/styles/Login.css"; // Reusing the same styling
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleForgotPassword = (e) => {
+  const handleForgotPassword = async (e) => {
     e.preventDefault();
-    console.log("Reset link sent to:", email);
-    alert("Password reset link has been sent to your email.");
-    navigate("/login");
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("http://localhost:5000/forgot-password", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Something went wrong");
+      }
+
+      alert("Password reset link has been sent to your email.");
+      navigate("/login");
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -20,6 +44,9 @@ const ForgotPassword = () => {
         <p className="text-center text-gray-600 mb-4">
           Enter your email to receive a password reset link.
         </p>
+
+        {error && <p className="text-red-500">{error}</p>}
+
         <input
           type="email"
           className="border p-2 mb-2 w-full"
@@ -31,8 +58,9 @@ const ForgotPassword = () => {
         <button
           type="submit"
           className="bg-blue-600 text-white px-4 py-2 w-full"
+          disabled={loading}
         >
-          Send Reset Link
+          {loading ? "Sending..." : "Send Reset Link"}
         </button>
 
         {/* Back to Login Link */}

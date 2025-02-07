@@ -1,11 +1,13 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/navbar.css"; // Import the updated CSS file
 import Logo from "../../src/assets/png/Logo.png"; // Import your logo
+import { useAuth } from "../context/AuthProvider";
 
 const Navbar = () => {
   const location = useLocation(); // Get the current route
   const navigate = useNavigate(); // Hook for programmatic navigation
 
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
   // Function to navigate to home when clicking the logo or name
   const handleLogoClick = () => {
     navigate("/");
@@ -23,18 +25,33 @@ const Navbar = () => {
         {/* <Link to="/" className={location.pathname === "/" ? "active-link" : ""}>
           Home
         </Link> */}
-        <Link
-          to="/login"
-          className={location.pathname === "/login" ? "active-link" : ""}
-        >
-          Login
-        </Link>
-        <Link
-          to="/signup"
-          className={location.pathname === "/signup" ? "active-link" : ""}
-        >
-          Sign Up
-        </Link>
+        {isAuthenticated ? (
+          <>
+            <button
+              className="sign-out-btn"
+              onClick={() => {
+                setIsAuthenticated(false);
+              }}
+            >
+              Sign Out
+            </button>
+          </>
+        ) : (
+          <>
+            <Link
+              to="/login"
+              className={location.pathname === "/login" ? "active-link" : ""}
+            >
+              Login
+            </Link>
+            <Link
+              to="/signup"
+              className={location.pathname === "/signup" ? "active-link" : ""}
+            >
+              Sign Up
+            </Link>
+          </>
+        )}
         {/* <Link
           to="/dashboard"
           className={`dashboard-btn ${

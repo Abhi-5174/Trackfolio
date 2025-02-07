@@ -1,16 +1,37 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
 import "../../src/styles/Login.css"; // Import the CSS file
+import { useAuth } from "../context/AuthProvider";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    console.log("Logging in with:", email, password);
+  if (isAuthenticated) {
     navigate("/dashboard");
+  }
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`http://localhost:5000/login`, {
+        email,
+        password,
+      });
+      const { data: { token = "", message } = {} } = response || {};
+
+      localStorage.setItem("accessToken", token);
+      toast.success(message);
+      setIsAuthenticated(true);
+      navigate("/dashboard");
+    } catch (error) {
+      console.log(error);
+      const { response: { data: { message } = {} } = {} } = error || {};
+      toast.error(message);
+    }
   };
 
   return (
