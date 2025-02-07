@@ -20,6 +20,24 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.sign-out-btn {
+  background-color: #facc15;
+  color: #1e3a8a;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 10px 14px; /* Same padding */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+.sign-out-btn:hover {
+  background-color: #eab308; /* Same hover effect */
+  transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
 /* Brand (Investment Tracker) */
 .brand {
   font-size: 1.8rem;

@@ -1,17 +1,39 @@
 // src/pages/Signup.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
 import "../../src/styles/Signup.css"; // Import the CSS file with separate styles
+import { useAuth } from "../context/AuthProvider";
+
+const API_BASE_URL = import.meta.env.HOST_NAME; // Get the base URL
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { isAuthenticated } = useAuth();
+  console.log({ API_BASE_URL });
   const navigate = useNavigate();
-
-  const handleSignup = (e) => {
-    e.preventDefault();
-    console.log("Signing up with:", email, password);
+  if (isAuthenticated) {
     navigate("/dashboard");
+  }
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`http://localhost:5000/signup`, {
+        email,
+        password,
+      });
+      const { data: { message } = {} } = response || {};
+
+      toast.success(message);
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+      const { response: { data: { message } = {} } = {} } = error || {};
+      toast.error(message);
+    }
   };
 
   return (
