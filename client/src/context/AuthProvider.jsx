@@ -12,7 +12,10 @@ export const AuthProvider = ({ children }) => {
 
   const verifyToken = async (token) => {
     if (!token) {
+      
       setIsAuthenticated(false);
+      navigate("/");
+      return;
     }
 
     try {
@@ -21,8 +24,14 @@ export const AuthProvider = ({ children }) => {
       });
 
       setIsAuthenticated(true);
+      navigate("/dashboard");
+      return;
+
     } catch (error) {
+
       setIsAuthenticated(false);
+      navigate("/");
+      return;
     }
   };
 
