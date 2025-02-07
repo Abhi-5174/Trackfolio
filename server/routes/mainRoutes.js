@@ -20,4 +20,8 @@ router.post("/auth-verify", authVerify);
 router.post("/forgot-password", forgotPassword);
 router.post("/reset-password/:token", resetPassword);
 
+router.get("/contact-us", (req, res, next) =>
+  res.status(200).send("Contact us page")
+);
+
 module.exports = router;
