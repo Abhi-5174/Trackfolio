@@ -4,13 +4,15 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import "../../src/styles/Login.css"; // Import the CSS file
 import { useAuth } from "../context/AuthProvider";
-import "../../src/styles/Login.css"; 
+import "../../src/styles/Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { isAuthenticated, setIsAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const API_BASE_URL =
+    import.meta.env.VITE_API_BASE_URL || `http://localhost:5000`; // Import API URL
 
   if (isAuthenticated) {
     navigate("/dashboard");
@@ -18,7 +20,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:5000/login`, {
+      const response = await axios.post(`${API_BASE_URL}/login`, {
         email,
         password,
       });
