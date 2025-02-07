@@ -27,7 +27,7 @@ const Home = () => {
             <li>📊 Track Stocks, Crypto, & Mutual Funds</li>
           </ul>
           <a href="/signup" className="btn btn-primary">
-            Get Started
+            Get Started 
           </a>
         </div>
       </section>

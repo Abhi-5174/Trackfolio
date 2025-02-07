@@ -1,4 +1,9 @@
 /* Home Page Styles */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 .hero-section {
   display: flex;
   flex-direction: column;
@@ -9,12 +14,14 @@
   padding: 20px;
   background: url("https://t3.ftcdn.net/jpg/01/38/68/70/240_F_138687075_5hkQBKiQbnrAllPMq7kKbZ4qHYsDkOjg.jpg")
     no-repeat center center/cover;
+    /* background: linear-gradient(45deg, #ff7eb3, #ff758c, #ff7eb3, #ff758c); */
+  background-size: 200% 200%;
+  animation: gradientAnimation 8s infinite alternate;
   color: white;
   position: relative;
   z-index: 1;
 }
-/* https://cdn.pixabay.com/photo/2024/04/27/07/00/ai-generated-8723233_640.jpg */
-/* Overlay for better text visibility */
+
 .hero-section::before {
   content: "";
   position: absolute;
@@ -51,6 +58,7 @@
 }
 
 /* Hero Features List */
+/* Hero Features List */
 .hero-features {
   list-style: none;
   padding: 0;
@@ -62,13 +70,38 @@
   animation: fadeInUp 1s ease-in-out;
 }
 
+/* Floating Animation */
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Feature Items */
 .hero-features li {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.6);
   padding: 10px 15px;
   border-radius: 8px;
   font-size: 1.2rem;
   font-weight: bold;
+  box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  animation: floating 3s infinite ease-in-out;
 }
+
+/* Hover Effect */
+.hero-features li:hover {
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+  transform: scale(1.02);
+}
+
 
 /* Call-to-Action Button */
 .btn-primary {
@@ -81,10 +114,12 @@
   border-radius: 8px;
   text-decoration: none;
   transition: background 0.3s ease-in-out;
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
 }
 
 .btn-primary:hover {
   background: #eab308;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
 }
 
 /* CTA Buttons */
@@ -94,48 +129,17 @@
   font-size: 1.1rem;
   border-radius: 25px;
   transition: 0.3s ease;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
 .hero-section .cta-buttons a:hover {
   background-color: #fff;
   color: #3498db;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
-/* Statistics Section */
-/* .statistics-section {
-  display: flex;
-  justify-content: space-around;
-  padding: 50px 0;
-  background-color: #f4f7fc;
-}
 
-.stat-card {
-  background-color: white;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  width: 250px;
-}
 
-.stat-card:hover {
-  transform: translateY(-10px);
-}
-
-.stat-card h3 {
-  font-size: 1.5rem;
-  color: #333;
-}
-
-.stat-card p {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #2ecc71;
-} */
-
-/* Animated Images Section */
 /* Animated Images Section */
 .animated-images {
   display: flex;
