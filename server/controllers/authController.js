@@ -6,7 +6,7 @@ const crypto = require("crypto");
 require("dotenv/config");
 
 const JWT_SECRET = process.env.JWT_SECRET;
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5182";
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 
 // Signup
 exports.signup = async (req, res, next) => {
@@ -56,9 +56,7 @@ exports.forgotPassword = async (req, res, next) => {
     user.resetTokenExpiry = Date.now() + 3600000; // 1 hour
     await user.save();
 
-    //const resetLink = `${FRONTEND_URL}/reset-password/${token}`;
-    const resetLink = `http://localhost:5182/reset-password/${token}`;
-
+    const resetLink = `${FRONTEND_URL}/reset-password/${token}`;
     const contactUsLink = `${FRONTEND_URL}/contact-us`;
 
     const emailContent = `
@@ -72,7 +70,11 @@ exports.forgotPassword = async (req, res, next) => {
     </div>
   `;
 
-    await sendEmail(email, "Password Reset", emailContent);
+    await sendEmail(
+      email,
+      "Password Reset",
+      emailContent
+    );
 
     res.json({ message: "Password reset email sent!" });
   } catch (error) {
@@ -104,7 +106,7 @@ exports.resetPassword = async (req, res, next) => {
   }
 };
 
-// token verify
+// Token Verify
 exports.authVerify = async (req, res, next) => {
   const { token } = req.body;
   if (!token) {
@@ -116,5 +118,31 @@ exports.authVerify = async (req, res, next) => {
     res.json({ message: "Token is valid", user: decoded });
   } catch (err) {
     next(err);
+  }
+};
+
+// Contact Us
+exports.contactUs = async (req, res, next) => {
+  try {
+    const { name, email, message } = req.body;
+
+    const emailContent = `
+    <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+      <h2 style="color: #333;">Contact Us</h2>
+      <p>From: ${email}</p>
+      <p>Name: ${name}</p>
+      <p>${message}</p>
+    </div>
+  `;
+
+    await sendEmail(
+      process.env.EMAIL_USER,
+      "Contact Us",
+      emailContent
+    );
+
+    res.json({ message: "Message sent!" });
+  } catch (error) {
+    next(error);
   }
 };
