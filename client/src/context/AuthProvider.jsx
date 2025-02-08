@@ -8,29 +8,17 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const navigate = useNavigate();
 
   const verifyToken = async (token) => {
-    if (!token) {
-      
-      setIsAuthenticated(false);
-      navigate("/");
-      return;
-    }
-
     try {
       await axios.post(`${API_BASE_URL}/auth-verify`, {
         token,
       });
 
       setIsAuthenticated(true);
-      navigate("/dashboard");
       return;
-
     } catch (error) {
-
       setIsAuthenticated(false);
-      navigate("/");
       return;
     }
   };
