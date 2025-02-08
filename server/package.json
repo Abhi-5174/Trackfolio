@@ -1,7 +1,11 @@
 {
-  "name": "investment-portfolio-backend",
+  "name": "server",
   "version": "1.0.0",
   "main": "server.js",
+  "private": true,
+  "type": "commonjs",
+  "description": "Server for the Portfolio Tracker application",
+  "license": "ISC",
   "scripts": {
     "start": "nodemon server.js"
   },
