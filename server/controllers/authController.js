@@ -120,3 +120,29 @@ exports.authVerify = async (req, res, next) => {
     next(err);
   }
 };
+
+// Contact Us
+exports.contactUs = async (req, res, next) => {
+  try {
+    const { name, email, message } = req.body;
+
+    const emailContent = `
+    <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+      <h2 style="color: #333;">Contact Us</h2>
+      <p>From: ${email}</p>
+      <p>Name: ${name}</p>
+      <p>${message}</p>
+    </div>
+  `;
+
+    await sendEmail(
+      process.env.EMAIL_USER,
+      "Contact Us",
+      emailContent
+    );
+
+    res.json({ message: "Message sent!" });
+  } catch (error) {
+    next(error);
+  }
+};

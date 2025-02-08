@@ -6,6 +6,7 @@ const {
   forgotPassword,
   resetPassword,
   authVerify,
+  contactUs,
 } = require("../controllers/authController");
 
 const router = express.Router();
@@ -19,9 +20,6 @@ router.post("/login", login);
 router.post("/auth-verify", authVerify);
 router.post("/forgot-password", forgotPassword);
 router.post("/reset-password/:token", resetPassword);
-
-router.get("/contact-us", (req, res, next) =>
-  res.status(200).send("Contact us page")
-);
+router.post("/contact", contactUs);
 
 module.exports = router;
