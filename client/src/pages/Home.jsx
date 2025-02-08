@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 import "../../src/styles/Home.css"; // Import the CSS for this page
-import AOS from "aos"; // Import the AOS library for scroll animations
-import "aos/dist/aos.css"; // Import the AOS CSS
+import AOS from "aos";
+import "aos/dist/aos.css"; 
 import InvestmentStats from "../components/InvestmentStats";
+import { SquareActivity } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Chatbot } from "../components/chatBot";
+
 
 const Home = () => {
   useEffect(() => {
     AOS.init(); // Initialize AOS for scroll animations
   }, []);
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -26,15 +31,13 @@ const Home = () => {
             <li>🔍 AI-Driven Investment Insights</li>
             <li>📊 Track Stocks, Crypto, & Mutual Funds</li>
           </ul>
-          <a href="/signup" className="btn btn-primary">
-            Get Started 
-          </a>
+          <button className=" btn-primary" onClick={() => navigate("/login")}>
+            Get Started <SquareActivity style={{marginLeft:"10px"}}/>
+          </button>
         </div>
       </section>
 
       {/* Animated Images Section */}
-      {/* Animated Images Section with Information */}
-      {/* Animated Images Section with Information */}
       <section className="animated-images" data-aos="fade-up">
         <h2 className="section-heading">
           Explore Market Trends & Investment Insights
@@ -96,30 +99,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* New Statistics Section (Inspired by the Image) */}
-
-      <InvestmentStats />
-      {/* <section className="investment-stats" data-aos="fade-up">
-        <div className="stat-item" data-aos="flip-left">
-          <h2>
-            400<span>k+</span>
-          </h2>
-          <p>Investors trust Sharesight</p>
-          <div className="stat-underline yellow"></div>
-        </div>
-        <div className="stat-item" data-aos="flip-left">
-          <h2>
-            700<span>k+</span>
-          </h2>
-          <p>Stocks, ETFs & funds supported</p>
-          <div className="stat-underline blue"></div>
-        </div>
-        <div className="stat-item" data-aos="flip-left">
-          <h2>200</h2>
-          <p>Software, broker & partner integrations</p>
-          <div className="stat-underline orange"></div>
-        </div>
-      </section> */}
+      <InvestmentStats/>
 
       {/* Pricing & Plans Section */}
       <section className="pricing-section" data-aos="fade-up">
@@ -143,9 +123,9 @@ const Home = () => {
               <li>Limited Reporting</li>
               <li>Basic Support</li>
             </ul>
-            <a href="/signup" className="btn btn-outline">
+            <button className="btn btn-outline" onClick={() => navigate("/login")}>
               Get started →
-            </a>
+            </button>
           </div>
 
           {/* Starter Plan */}
@@ -162,9 +142,9 @@ const Home = () => {
               <li>Limited Reporting</li>
               <li>Standard Support</li>
             </ul>
-            <a href="/signup" className="btn btn-primary">
+            <button className="btn btn-primary" onClick={() => navigate("/signup")}>
               Get started →
-            </a>
+            </button>
           </div>
 
           {/* Investor Plan */}
@@ -181,9 +161,9 @@ const Home = () => {
               <li>Advanced Reporting</li>
               <li>Standard Support</li>
             </ul>
-            <a href="/signup" className="btn btn-primary">
+            <button className="btn btn-primary" onClick={() => navigate("/signup")}>
               Get started →
-            </a>
+            </button>
           </div>
 
           {/* Expert Plan */}
@@ -200,19 +180,14 @@ const Home = () => {
               <li>Full Reporting</li>
               <li>Priority Support</li>
             </ul>
-            <a href="/signup" className="btn btn-outline">
+            <button className="btn btn-outline" onClick={() => navigate("/signup")}>
               Get started →
-            </a>
+            </button>
           </div>
         </div>
       </section>
 
-      {/* Link to Dashboard Section */}
-      {/* <section className="dashboard-link">
-        <a href="/dashboard" className="btn btn-outline">
-          Go to Dashboard
-        </a>
-      </section> */}
+      <Chatbot/>
     </div>
   );
 };

@@ -21,56 +21,66 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
-      <div className="brand-logo" onClick={handleLogoClick}>
-        <h1 className="brand-name">Trackfolio</h1>
-        <img src={Logo} alt="Trackfolio Logo" className="nav-logo" />
-      </div>
+    <>
+      <nav className="navbar">
+        <div className="brand-logo" onClick={handleLogoClick}>
+          {/* <h1 className="brand-name">Trackfolio</h1> */}
+          <img src={Logo} alt="Trackfolio Logo" className="nav-logo" />
+        </div>
 
-      <div className="nav-links">
-        {isAuthenticated ? (
-          <>
-            <Link
-              to="/dashboard"
-              className={
-                location.pathname === "/dashboard" ? "active-link" : ""
-              }
-            >
-              <FaTachometerAlt size={20} style={{ marginRight: "8px" }} />{" "}
-              {/* Dashboard Icon */}
-            </Link>
-            <button
-              className="sign-out-btn"
-              onClick={() => {
-                localStorage.removeItem("accessToken");
-                setIsAuthenticated(false);
-                navigate("/");
-              }}
-            >
-              Sign Out
-            </button>
-          </>
-        ) : (
-          <>
-            <Link
-              to="/login"
-              className={location.pathname === "/login" ? "active-link" : ""}
-            >
-              Login
-            </Link>
-            <Link
-              to="/signup"
-              className={location.pathname === "/signup" ? "active-link" : ""}
-            >
-              Sign Up
-            </Link>
-          </>
-        )}
+        <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+          {isAuthenticated ? (
+            <>
+              <Link
+                to="/dashboard"
+                className={
+                  location.pathname === "/dashboard" ? "active-link" : ""
+                }
+              >
+                <FaTachometerAlt size={20} style={{ marginRight: "8px" }} />{" "}
+                {/* Dashboard Icon */}
+              </Link>
+              <button
+                className="sign-out-btn"
+                onClick={() => {
+                  localStorage.removeItem("accessToken");
+                  setIsAuthenticated(false);
+                  navigate("/");
+                }}
+              >
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+              <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
+              <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+              <Link
+                to="/login"
+                className={location.pathname === "/login" ? "active-link" : ""}
+                onClick={() => setMenuOpen(false)}
+              >
+                Login
+              </Link>
+              <Link
+                to="/signup"
+                className={location.pathname === "/signup" ? "active-link" : ""}
+                onClick={() => setMenuOpen(false)}
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
+          <button className="menu-toggle" onClick={toggleMenu}>
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
         <button className="menu-toggle" onClick={toggleMenu}>
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
-      </div>
-    </nav>
+      </nav >
+    </>
   );
 };
 

@@ -105,12 +105,17 @@
 
 /* Call-to-Action Button */
 .btn-primary {
-  display: inline-block;
+  display: flex;
+  /* width: 200px; */
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
   background: #facc15;
   color: #1e3a8a;
   font-size: 1.2rem;
   font-weight: bold;
-  padding: 12px 24px;
+  padding: 12px 30px;
   border-radius: 8px;
   text-decoration: none;
   transition: background 0.3s ease-in-out;
