@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000"; // Import API URL
 
 const AuthContext = createContext();
 
@@ -10,23 +12,26 @@ export const AuthProvider = ({ children }) => {
 
   const verifyToken = async (token) => {
     if (!token) {
-      // console.log("No token found, redirecting to login");
+      
       setIsAuthenticated(false);
       navigate("/");
       return;
     }
 
     try {
-      await axios.post(`http://localhost:5000/auth-verify`, {
+      await axios.post(`${API_BASE_URL}/auth-verify`, {
         token,
       });
-      // console.log("Token verified, redirecting to dashboard");
+
       setIsAuthenticated(true);
       navigate("/dashboard");
+      return;
+
     } catch (error) {
-      // console.log("Token verification failed, redirecting to login", error);
+
       setIsAuthenticated(false);
       navigate("/");
+      return;
     }
   };
 

@@ -7,13 +7,13 @@ import axios from "axios";
 import "../../src/styles/Signup.css"; // Import the CSS file with separate styles
 import { useAuth } from "../context/AuthProvider";
 
-const API_BASE_URL = import.meta.env.HOST_NAME; // Get the base URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // Import API URL
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { isAuthenticated } = useAuth();
-  // console.log({ API_BASE_URL });
+
   const navigate = useNavigate();
   if (isAuthenticated) {
     navigate("/dashboard");
@@ -22,7 +22,7 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:5000/signup`, {
+      const response = await axios.post(`${API_BASE_URL}/signup`, {
         email,
         password,
       });

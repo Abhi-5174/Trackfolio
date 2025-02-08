@@ -8,13 +8,16 @@ const ForgotPassword = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const API_BASE_URL =
+    import.meta.env.VITE_API_BASE_URL || "http://localhost:5000"; // Import API URL
+
   const handleForgotPassword = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/forgot-password", {
+      const response = await fetch(`${API_BASE_URL}/forgot-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

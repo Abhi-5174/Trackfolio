@@ -6,6 +6,7 @@ const crypto = require("crypto");
 require("dotenv/config");
 
 const JWT_SECRET = process.env.JWT_SECRET;
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 
 // Signup
 exports.signup = async (req, res, next) => {
@@ -55,13 +56,24 @@ exports.forgotPassword = async (req, res, next) => {
     user.resetTokenExpiry = Date.now() + 3600000; // 1 hour
     await user.save();
 
-    const resetLink = `http://localhost:5000/reset-password/${token}`;
-    // const resetLink = `http://localhost:5173/reset-password/${token}`; // Redirects to frontend
+    const resetLink = `${FRONTEND_URL}/reset-password/${token}`;
+    const contactUsLink = `${FRONTEND_URL}/contact-us`;
+
+    const emailContent = `
+    <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+      <h2 style="color: #333;">Password Reset Request</h2>
+      <p>Dear User,</p>
+      <p>We received a request to reset your password for your TrackFolio account. Click the link below to reset your password:</p>
+      <a href="${resetLink}" style="display: inline-block; padding: 10px 20px; margin: 10px 0; font-size: 16px; color: #fff; background-color: #007bff; text-decoration: none; border-radius: 5px;">Reset Password</a>
+      <p>If you did not request a password reset, please ignore this email or <a href="${contactUsLink}" style="color: #007bff; text-decoration: none;">contact support</a> if you have questions.</p>
+      <p>Thank you,<br>The TrackFolio Team</p>
+    </div>
+  `;
 
     await sendEmail(
       email,
       "Password Reset",
-      `Click here to reset password: ${resetLink}`
+      emailContent
     );
 
     res.json({ message: "Password reset email sent!" });
@@ -83,7 +95,7 @@ exports.resetPassword = async (req, res, next) => {
     if (!user)
       return res.status(400).json({ message: "Invalid or expired token" });
 
-    user.password = await bcrypt.hash(newPassword, 10);
+    user.password = newPassword;
     user.resetToken = undefined;
     user.resetTokenExpiry = undefined;
     await user.save();
@@ -94,7 +106,7 @@ exports.resetPassword = async (req, res, next) => {
   }
 };
 
-// token verify
+// Token Verify
 exports.authVerify = async (req, res, next) => {
   const { token } = req.body;
   if (!token) {
@@ -106,5 +118,31 @@ exports.authVerify = async (req, res, next) => {
     res.json({ message: "Token is valid", user: decoded });
   } catch (err) {
     next(err);
+  }
+};
+
+// Contact Us
+exports.contactUs = async (req, res, next) => {
+  try {
+    const { name, email, message } = req.body;
+
+    const emailContent = `
+    <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+      <h2 style="color: #333;">Contact Us</h2>
+      <p>From: ${email}</p>
+      <p>Name: ${name}</p>
+      <p>${message}</p>
+    </div>
+  `;
+
+    await sendEmail(
+      process.env.EMAIL_USER,
+      "Contact Us",
+      emailContent
+    );
+
+    res.json({ message: "Message sent!" });
+  } catch (error) {
+    next(error);
   }
 };

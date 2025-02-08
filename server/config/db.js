@@ -8,11 +8,25 @@ const connectDB = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
-        console.log("MongoDB Connected");
     } catch (error) {
-        console.error("Database connection failed:", error);
-        process.exit(1);
+        console.error("Database connection failed:", error.message);
+
+        // Retry connection every 5 seconds if the connection fails
+        setTimeout(connectDB, 5000);
     }
 };
+
+// MongoDB connection events
+mongoose.connection.on('connected', () => {
+    console.log('MongoDB connected successfully');
+});
+
+mongoose.connection.on('error', (err) => {
+    console.error(`MongoDB connection error: ${err}`);
+});
+
+mongoose.connection.on('disconnected', () => {
+    console.log('MongoDB connection lost, attempting to reconnect...');
+});
 
 module.exports = connectDB;

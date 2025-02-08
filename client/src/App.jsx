@@ -18,20 +18,19 @@ import ResetPassword from "./pages/ResetPassword";
 import Loading from "./components/Loading";
 
 const App = () => {
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false); 
+      setLoading(false);
     }, 2000);
 
-    return () => clearTimeout(timer); 
+    return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
-    return < Loading />; 
-  }  
+    return <Loading />;
+  }
 
   return (
     <>
