@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-import "../../src/styles/Login.css"; // Import the CSS file
-import { useAuth } from "../context/AuthProvider";
 import "../../src/styles/Login.css"; 
+import { useAuth } from "../context/AuthProvider";
+import Logo from "../../src/assets/png/Logo.png"; 
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -38,6 +38,7 @@ const Login = () => {
   return (
     <div className="login-page">
       <form onSubmit={handleLogin} className="login-form">
+        <img src={Logo} alt="logo" style={{height:"80px", textAlign:"center"}} />
         <h1>Welcome</h1>
         <h2>Login to your Trackfolio account</h2>
         <label htmlFor="email">Email</label>
@@ -73,6 +74,8 @@ const Login = () => {
         >
           Login
         </button>
+        <p style={{marginTop:"20px", marginBottom:"10px"}}>Don't have account Sign Up</p>
+        <button style={{marginTop:"20px", marginBottom:"10px" }} className="submit-button" onClick={()=> navigate("/signup")}>Sign Up</button>
       </form>
     </div>
   );

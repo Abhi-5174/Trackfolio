@@ -1,0 +1,131 @@
+/* Contact Page Styling */
+.contact-container {
+    max-width: 100%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #a3a2a2, #ebedee);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Left Side - Contact Form */
+  .contact-form-container {
+    flex: 1;
+    min-width: 55%;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+  }
+  .contact-form-container>h2{
+    font-size: 27px;
+    font-weight: 700;
+  }
+  
+  /* Right Side - Address Box */
+  .address-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    min-width: 35%;
+    background: #2d4059;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    animation: fadeInRight 1s ease-in-out;
+  }
+  
+  .address-box h2 {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ffeb3b;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  
+  .address-box p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 10px;
+  }
+  
+  /* Form Styling */
+  .contact-form-container label {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+  }
+  
+  .contact-form-container input,
+  .contact-form-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+  }
+  
+  .contact-form-container input:focus,
+  .contact-form-container textarea:focus {
+    border-color: #2d4059;
+    outline: none;
+  }
+  
+  /* Submit Button */
+  .contact-button {
+    width: 100%;
+    padding: 12px;
+    background: #ff5722;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .contact-button:hover {
+    background: #e64a19;
+    transform: scale(1.05);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .contact-container {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .contact-form-container, .address-box {
+      min-width: 100%;
+    }
+  }
+  
