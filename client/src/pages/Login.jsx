@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-import "../../src/styles/Login.css"; 
+import "../../src/styles/Login.css";
 import { useAuth } from "../context/AuthProvider";
-import Logo from "../../src/assets/png/Logo.png"; 
+import Logo from "../../src/assets/png/Logo.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -40,7 +40,7 @@ const Login = () => {
   return (
     <div className="login-page">
       <form onSubmit={handleLogin} className="login-form">
-        <img src={Logo} alt="logo" style={{height:"80px", textAlign:"center"}} />
+        <img src={Logo} alt="logo" style={{ height: "80px", textAlign: "center" }} />
         <h1>Welcome</h1>
         <h2>Login to your Trackfolio account</h2>
         <label htmlFor="email">Email</label>
@@ -63,7 +63,7 @@ const Login = () => {
         {/* Forgot Password Link Positioned Correctly */}
         <div className="forgot-password-container">
           <p
-            className="forgot-password"
+            className="forgot-password text-blue-600 py-2"
             onClick={() => navigate("/forgot-password")}
           >
             Forgot Password?
@@ -76,8 +76,7 @@ const Login = () => {
         >
           Login
         </button>
-        <p style={{marginTop:"20px", marginBottom:"10px"}}>Don't have account Sign Up</p>
-        <button style={{marginTop:"20px", marginBottom:"10px" }} className="submit-button" onClick={()=> navigate("/signup")}>Sign Up</button>
+        <p style={{ marginTop: "20px", marginBottom: "10px" }}>Don't have an account? <span className="cursor-pointer text-blue-800" onClick={() => navigate("/signup")}>Sign Up</span></p>
       </form>
     </div>
   );

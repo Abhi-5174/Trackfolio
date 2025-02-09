@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import "../../src/styles/Home.css"; // Import the CSS for this page
 import AOS from "aos";
-import "aos/dist/aos.css"; 
+import "aos/dist/aos.css";
 import InvestmentStats from "../components/InvestmentStats";
 import { SquareActivity } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Chatbot } from "../components/chatBot";
-
 
 const Home = () => {
   useEffect(() => {
@@ -32,7 +31,7 @@ const Home = () => {
             <li>📊 Track Stocks, Crypto, & Mutual Funds</li>
           </ul>
           <button className=" btn-primary" onClick={() => navigate("/login")}>
-            Get Started <SquareActivity style={{marginLeft:"10px"}}/>
+            Get Started <SquareActivity style={{ marginLeft: "10px" }} />
           </button>
         </div>
       </section>
@@ -99,7 +98,7 @@ const Home = () => {
         </div>
       </section>
 
-      <InvestmentStats/>
+      <InvestmentStats />
 
       {/* Pricing & Plans Section */}
       <section className="pricing-section" data-aos="fade-up">
@@ -187,7 +186,7 @@ const Home = () => {
         </div>
       </section>
 
-      <Chatbot/>
+      <Chatbot />
     </div>
   );
 };

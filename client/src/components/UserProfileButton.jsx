@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/userProfile.css";
-import logo from "../assets/userLogo.webp";
+import logo from "../assets/userLogo.png";
 
 const UserDropdown = ({ setIsAuthenticated }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,6 +43,9 @@ const UserDropdown = ({ setIsAuthenticated }) => {
       {/* Dropdown Menu */}
       {isOpen && (
         <div className="dropdown-menu">
+          <button className="dropdown-item">
+            <span className="sign-out-icon">&#128512;</span> Profile
+          </button>
           <button className="dropdown-item" onClick={handleSignOut}>
             <span className="sign-out-icon">↩️</span> Sign Out
           </button>

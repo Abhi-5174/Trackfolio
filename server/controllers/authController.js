@@ -57,7 +57,7 @@ exports.forgotPassword = async (req, res, next) => {
     await user.save();
 
     const resetLink = `${FRONTEND_URL}/reset-password/${token}`;
-    const contactUsLink = `${FRONTEND_URL}/contact-us`;
+    const contactUsLink = `${FRONTEND_URL}/contact`;
 
     const emailContent = `
     <div style="font-family: Arial, sans-serif; line-height: 1.6;">

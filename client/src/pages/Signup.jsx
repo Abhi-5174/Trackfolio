@@ -67,8 +67,8 @@ const Signup = () => {
         >
           Sign Up
         </button>
-        <p className="login-redirect">
-          Already have an account? <span style={{cursor:"pointer", color:"#D70040"}} onClick={() => navigate("/login")}>Login</span>
+        <p className="login-redirect py-2">
+          Already have an account? <span style={{ cursor: "pointer", color: "blue" }} onClick={() => navigate("/login")}>Login</span>
         </p>
       </form>
     </div>

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "../styles/contact.css";
+import { Chatbot } from "../components/chatBot";
 
 const Contact = () => {
+  const BACKEND_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/";
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,6 +16,8 @@ const Contact = () => {
     email: "",
     message: "",
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -39,11 +44,34 @@ const Contact = () => {
     return isValid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      alert("Form submitted successfully!");
-      setFormData({ name: "", email: "", message: "" });
+      setIsSubmitting(true);
+      try {
+        const URL = `${BACKEND_URL}/contact`;
+        const response = await fetch(URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+          alert("Failed to submit the form. Please try again later.");
+          setIsSubmitting(false);
+          return;
+        }
+
+        alert("Form submitted successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } catch (error) {
+        console.error("Submission error:", error);
+        alert("Error submitting form: " + error.message);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -84,8 +112,8 @@ const Contact = () => {
           ></textarea>
           {errors.message && <p style={{ color: "red" }}>{errors.message}</p>}
 
-          <button type="submit" className="contact-button">
-            Send Message
+          <button type="submit" className="contact-button" disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Send Message"}
           </button>
         </form>
       </div>
@@ -95,10 +123,12 @@ const Contact = () => {
         <h2>Our Address</h2>
         <p>🏢 Investment Portfolio Tracker</p>
         <p>📍 123 Finance Street, New Delhi, NY 10001</p>
-        <p>📞 Phone: +91 9654367893</p>
-        <p>📧 Email: contact@investmenttracker.com</p>
+        <p>📞 Phone: +91 123456789</p>
+        <p>📧 Email: abckewat@gmail.com</p>
         <p>⏰ Business Hours: Mon-Fri, 9 AM - 5 PM</p>
       </div>
+
+      <Chatbot />
     </div>
   );
 };

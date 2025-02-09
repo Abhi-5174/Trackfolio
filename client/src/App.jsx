@@ -21,6 +21,7 @@ import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import ResetPassword from "./pages/ResetPassword";
 import Loading from "./components/Loading";
+import { Chatbot } from "./components/chatBot";
 import "./index.css";
 import { Plus } from "lucide-react";
 import InvestmentDashboard from "./components/InvestmentDashboard";
@@ -92,6 +93,7 @@ function Dashboard({
           onDeleteInvestment={onDeleteInvestment}
           onDuplicateInvestment={onDuplicateInvestment}
         />
+        <Chatbot />
       </div>
     </div>
   );
