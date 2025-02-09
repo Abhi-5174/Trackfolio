@@ -3,18 +3,14 @@ import "../styles/navbar.css"; // Import the updated CSS file
 import Logo from "../../src/assets/png/Logo.png"; // Import your logo
 import { useAuth } from "../context/AuthProvider";
 import { useState } from "react";
-import { FaBars, FaTimes, FaTachometerAlt } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
+import UserDropdown from "./UserProfileButton";
 
 const Navbar = () => {
   const location = useLocation(); // Get the current route
-  const navigate = useNavigate(); // Hook for programmatic navigation
 
   const { isAuthenticated, setIsAuthenticated } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleLogoClick = () => {
-    navigate("/");
-  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -23,7 +19,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar">
-        <div className="brand-logo" onClick={handleLogoClick}>
+        <div className="brand-logo">
           {/* <h1 className="brand-name">Trackfolio</h1> */}
           <img src={Logo} alt="Trackfolio Logo" className="nav-logo" />
         </div>
@@ -31,31 +27,28 @@ const Navbar = () => {
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           {isAuthenticated ? (
             <>
-              <Link
-                to="/dashboard"
-                className={
-                  location.pathname === "/dashboard" ? "active-link" : ""
-                }
-              >
-                <FaTachometerAlt size={20} style={{ marginRight: "8px" }} />{" "}
-                {/* Dashboard Icon */}
+              <Link to="/" onClick={() => setMenuOpen(false)}>
+                Home
               </Link>
-              <button
-                className="sign-out-btn"
-                onClick={() => {
-                  localStorage.removeItem("accessToken");
-                  setIsAuthenticated(false);
-                  navigate("/");
-                }}
-              >
-                Sign Out
-              </button>
+              <Link to="/about" onClick={() => setMenuOpen(false)}>
+                About
+              </Link>
+              <Link to="/contact-us" onClick={() => setMenuOpen(false)}>
+                Contact
+              </Link>
+              <UserDropdown setIsAuthenticated={setIsAuthenticated} />
             </>
           ) : (
             <>
-              <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-              <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
-              <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+              <Link to="/" onClick={() => setMenuOpen(false)}>
+                Home
+              </Link>
+              <Link to="/about" onClick={() => setMenuOpen(false)}>
+                About
+              </Link>
+              <Link to="/contact-us" onClick={() => setMenuOpen(false)}>
+                Contact
+              </Link>
               <Link
                 to="/login"
                 className={location.pathname === "/login" ? "active-link" : ""}
@@ -79,7 +72,7 @@ const Navbar = () => {
         <button className="menu-toggle" onClick={toggleMenu}>
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
-      </nav >
+      </nav>
     </>
   );
 };
