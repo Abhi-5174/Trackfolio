@@ -14,10 +14,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ForgotPassword from "./pages/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
-import PublicRoute from "./PublicRoute";
 import ResetPassword from "./pages/ResetPassword";
 import Loading from "./components/Loading";
-import "./index.css";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -29,6 +27,7 @@ const App = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
   if (loading) {
     return <Loading />;
   }
@@ -39,48 +38,13 @@ const App = () => {
       <ToastContainer position="top-right" autoClose={3000} />
       <Routes>
         {/* Public Routes */}
-        <Route
-          path="/"
-          element={
-            <PublicRoute>
-              <Home />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <PublicRoute>
-              <Login />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <PublicRoute>
-              <Signup />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/forgot-password"
-          element={
-            <PublicRoute>
-              <ForgotPassword />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/reset-password/:token"
-          element={
-            <PublicRoute>
-              <ResetPassword />
-            </PublicRoute>
-          }
-        />
-        <Route path="/contact-us" element={<Contact />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
+        <Route path="/contact" element={<Contact/>}/>
+        <Route path="/about" element={<About/>}/>
 
         {/* Private Routes */}
 
