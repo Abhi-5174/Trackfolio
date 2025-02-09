@@ -21,7 +21,7 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="brand-logo">
           <Link to="/dashboard" onClick={() => setMenuOpen(false)}>
-          <img src={Logo} alt="Trackfolio Logo" className="nav-logo" />
+            <img src={Logo} alt="Trackfolio Logo" className="nav-logo" />
           </Link>
         </div>
 
