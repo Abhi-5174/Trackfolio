@@ -5,7 +5,7 @@
   align-items: center;
   height: 100vh;
   background-color: #f4f6f9;
-  background-image: url("https://media.istockphoto.com/id/1584774403/photo/uptrend-line-candlestick-graph-financial-diagrams.jpg?s=612x612&w=0&k=20&c=gLckUiRgsYy551JbGcdnloKYCDMrh6pgLrK1-xk-qTs=");
+  background-image: url("https://investorplace.com/wp-content/uploads/2024/01/growthstocks1600-2.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -14,19 +14,22 @@
 
 /* Form container styling */
 .login-form {
-  background-color: #fff;
-  padding: 2rem;
+  /* background-color: #fff; */
+  background: rgba(255, 255, 255, 0.9);
+  padding:  0.5rem 2rem;
+  padding-bottom: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
   box-sizing: border-box;
+  margin-bottom: 60px;
 }
 
 /* Form heading */
 .login-form>h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 700;
   text-align: center;
   margin-bottom: 0.2rem;
   color: #333;
@@ -34,8 +37,9 @@
 .login-form>h2 {
   font-size: 1.1rem;
   font-weight: 400;
+  font-family: cursive;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: #333;
 }
 /* Label Styling */

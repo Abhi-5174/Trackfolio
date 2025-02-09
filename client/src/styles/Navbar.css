@@ -14,7 +14,7 @@ body {
   width: 100%;
   top: 0;
   z-index: 1000;
-  padding: 10px 20px;
+  padding: 0px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -51,13 +51,14 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  cursor: pointer;
 }
 
 .nav-logo {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
+  width: 180px;
+  height: 70px;
+  filter: brightness(0) invert(1);
+  overflow-y: hidden;
+  object-fit: cover;
 }
 
 .brand-name {
@@ -81,6 +82,9 @@ body {
   padding: 10px 14px;
   border-radius: 5px;
   transition: background 0.3s ease-in-out;
+}
+.nav-links > a:hover {
+  background-color: rgb(101, 101, 101);
 }
 
 .nav-links .active-link {
@@ -115,29 +119,34 @@ body {
 @media (max-width: 768px) {
   .navbar {
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 15px;
+  }
+  .nav-logo {
+    width: 120px;
+    height: 40px;
   }
 
   /* Hide nav-links initially */
   .nav-links {
-    display: flex;
+    display: none;
     flex-direction: column;
     position: absolute;
-    top: 60px;
+    top: 67px;
     right: 0;
-    background-color: #080e15;
-    width: 100%;
+    background-color: #182433;
+    width: 50%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     padding: 20px 0;
     text-align: center;
     gap: 10px;
-    transform: translateY(-200%);
     transition: transform 0.3s ease-in-out;
   }
 
   /* Show menu when active */
   .nav-links.open {
-    transform: translateY(0);
+    display: flex;
   }
 
   .nav-links a {

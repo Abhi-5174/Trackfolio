@@ -22,4 +22,6 @@ router.post("/forgot-password", forgotPassword);
 router.post("/reset-password/:token", resetPassword);
 router.post("/contact", contactUs);
 
+router.use('/api', require('./investmentsRoutes'));
+
 module.exports = router;
