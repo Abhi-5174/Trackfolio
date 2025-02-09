@@ -281,8 +281,6 @@ const App = () => {
             </PublicRoute>
           }
         />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<About />} />
 
         {/* Private Routes */}
         <Route
