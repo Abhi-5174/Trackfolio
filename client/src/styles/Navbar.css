@@ -54,7 +54,7 @@ body {
 }
 
 .nav-logo {
-  width: 130px;
+  width: 180px;
   height: 70px;
   filter: brightness(0) invert(1);
   overflow-y: hidden;

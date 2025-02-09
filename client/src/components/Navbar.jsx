@@ -20,33 +20,28 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="brand-logo">
-          {/* <h1 className="brand-name">Trackfolio</h1> */}
-          <img src={Logo} alt="Trackfolio Logo" className="nav-logo" />
+          <Link to="/dashboard" onClick={() => setMenuOpen(false)}>
+            <img src={Logo} alt="Trackfolio Logo" className="nav-logo" />
+          </Link>
         </div>
 
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           {isAuthenticated ? (
             <>
-              <Link to="/" onClick={() => setMenuOpen(false)}>
-                Home
-              </Link>
               <Link to="/about" onClick={() => setMenuOpen(false)}>
                 About
               </Link>
-              <Link to="/contact-us" onClick={() => setMenuOpen(false)}>
+              <Link to="/contact" onClick={() => setMenuOpen(false)}>
                 Contact
               </Link>
               <UserDropdown setIsAuthenticated={setIsAuthenticated} />
             </>
           ) : (
             <>
-              <Link to="/" onClick={() => setMenuOpen(false)}>
-                Home
-              </Link>
               <Link to="/about" onClick={() => setMenuOpen(false)}>
                 About
               </Link>
-              <Link to="/contact-us" onClick={() => setMenuOpen(false)}>
+              <Link to="/contact" onClick={() => setMenuOpen(false)}>
                 Contact
               </Link>
               <Link
