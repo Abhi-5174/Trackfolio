@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import "../styles/navbar.css"; // Import the updated CSS file
+import "../styles/Navbar.css"; // Import the updated CSS file
 import Logo from "../../src/assets/png/Logo.png"; // Import your logo
 import { useAuth } from "../context/AuthProvider";
 import { useState } from "react";
