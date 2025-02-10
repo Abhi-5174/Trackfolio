@@ -5,6 +5,15 @@ import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
   plugins: [react()],
+  base: '/',
+  build: {
+    outDir: 'dist',
+  },
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
   css: {
     postcss: {
       plugins: [tailwindcss(), autoprefixer()],
