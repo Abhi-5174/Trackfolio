@@ -13,6 +13,7 @@ const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 const BACKEND_URL = process.env.FRONTEND_URL || "http://localhost:5000";
 
 const app = express();
+const __dirname = path.resolve();
 app.use(express.json());
 app.use(helmet());
 

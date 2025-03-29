@@ -19,7 +19,4 @@ export default defineConfig({
       plugins: [tailwindcss(), autoprefixer()],
     },
   },
-  server: {
-    historyApiFallback: true, // Ensure frontend routes work
-  },
 });
