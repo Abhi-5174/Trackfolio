@@ -1,9 +1,9 @@
+const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
 const User = require("../models/User");
 const sendEmail = require("../utils/sendEmail");
-const crypto = require("crypto");
-require("dotenv/config");
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
@@ -70,11 +70,7 @@ exports.forgotPassword = async (req, res, next) => {
     </div>
   `;
 
-    await sendEmail(
-      email,
-      "Password Reset",
-      emailContent
-    );
+    await sendEmail(email, "Password Reset", emailContent);
 
     res.json({ message: "Password reset email sent!" });
   } catch (error) {
@@ -135,11 +131,7 @@ exports.contactUs = async (req, res, next) => {
     </div>
   `;
 
-    await sendEmail(
-      process.env.EMAIL_USER,
-      "Contact Us",
-      emailContent
-    );
+    await sendEmail(process.env.EMAIL_USER, "Contact Us", emailContent);
 
     res.json({ message: "Message sent!" });
   } catch (error) {
